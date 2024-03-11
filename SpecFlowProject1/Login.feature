@@ -1,4 +1,5 @@
-﻿Feature: Login
+﻿@tagFeature
+Feature: Login
 	Helps to test the functionality of login
 
 @tag1
@@ -17,3 +18,13 @@ Examples:
 | username      | password     |
 | standard_user | secret_sauce |
 | problem_user  | secret_sauce |
+
+
+
+@tag1
+Scenario Outline: Login with valid credentials second
+	Given Display employee full name
+
+Examples:
+| username      | password     |
+| standard_user | secret_sauce |

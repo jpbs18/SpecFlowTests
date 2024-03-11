@@ -13,18 +13,24 @@ namespace SpecFlowProject1
     public class LoginStepDefinitions
     {
         IWebDriver driver;
-        private string _url;
-        private User _user;
+        FeatureContext _featureContext;
+        ScenarioContext _scenarioContext;
+        string _url;
+        User _user;
 
 
-        public LoginStepDefinitions(User user)
+
+        public LoginStepDefinitions(User user, FeatureContext featureContext, ScenarioContext scenarioContext)
         {
             new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
 
             driver = new ChromeDriver();
+            _featureContext = featureContext;
+            _scenarioContext = scenarioContext;
             _url = Runner.configurationRoot["Url"];
-            _user = user;
+            _user = user;        
         }
+
 
 
 
@@ -55,6 +61,8 @@ namespace SpecFlowProject1
                string base64 = ((ITakesScreenshot)driver).GetScreenshot().AsBase64EncodedString;
             }
         }
+
+
 
 
 
@@ -103,7 +111,10 @@ namespace SpecFlowProject1
         {
             _user.firstName = "Dan";
             _user.lastName = "Silva";
+            _featureContext["EmployeeFullName"] = "Jack Silva";
+            _scenarioContext["EmployeeMiddleName"] = "III";
         }
+
 
         [Then(@"Appears user details")]
         public void ThenAppearsUserDetails()

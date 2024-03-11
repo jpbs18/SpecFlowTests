@@ -16,7 +16,7 @@ namespace SpecFlowProject1
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            string path = "C:\\Users\\João\\Desktop\\Programação\\ASP-MVS\\SpecFlowProject1\\SpecFlowProject1\\jsconfig.json";
+            string path = "C:\\Learning\\SpecFlowTests\\SpecFlowProject1\\jsconfig.json";
             ConfigurationBuilder configBuilder = new ConfigurationBuilder();
             configurationRoot = configBuilder.AddJsonFile(path).Build();
         }
@@ -31,7 +31,7 @@ namespace SpecFlowProject1
         public static void BeforeFeature(FeatureContext context)
         {
             Console.WriteLine("After feauture");
-            Console.WriteLine(context.FeatureInfo.Title);
+            Console.WriteLine(context.FeatureInfo.Tags);
         }
 
         [AfterFeature]
